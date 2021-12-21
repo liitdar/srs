@@ -999,7 +999,7 @@ class SrsWorker(cherrypy.process.plugins.SimplePlugin):
     # {"action":"on_publish","client_id":108,"ip":"127.0.0.1","vhost":"__defaultVhost__","app":"live","stream":"livestream"}
     # ffmpeg -i rtmp://127.0.0.1:1935/live?vhost=dev/stream -vf fps=1 -vcodec png -f image2 -an -y -vframes 3 -y static-dir/live/livestream-%03d.png
     def snapshot_create(self, req):
-        url = "rtmp://127.0.0.1/%s...vhost...%s/%s"%(req['app'], req['vhost'], req['stream'])
+        url = "rtmp://127.0.0.1/%s%s/%s"%(req['app'], req['vhost'], req['stream'])
         if url in self.__snapshots:
             print 'ignore exists %s'%url
             return Error.success
